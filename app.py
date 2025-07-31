@@ -49,7 +49,39 @@ def create_review():
         'created_at': created_at
     }), 201
 
+@app.route('/reviews', methods=['GET'])
+def get_reviews():
+    sentiment_filter = request.args.get('sentiment')
 
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+
+        if sentiment_filter:
+            cursor.execute('''
+                SELECT id, text, sentiment, created_at
+                FROM reviews
+                WHERE sentiment = ?
+                ORDER BY created_at DESC
+            ''', (sentiment_filter,))
+        else:
+            cursor.execute('''
+                SELECT id, text, sentiment, created_at
+                FROM reviews
+                ORDER BY created_at DESC
+            ''')
+
+        rows = cursor.fetchall()
+        conn.close()
+    except sqlite3.Error as e:
+        return jsonify({'error': str(e)}), 500
+
+    reviews = [
+        {'id': r[0], 'text': r[1], 'sentiment': r[2], 'created_at': r[3]}
+        for r in rows
+    ]
+
+    return jsonify(reviews)
     
 if __name__ == '__main__':
     app.run(debug=True)
