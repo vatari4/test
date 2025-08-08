@@ -51,7 +51,6 @@ POSTGRES_PORT=5432
 POSTGRES_HOST=db
 POSTGRES_EXTERNAL_PORT=5438
 ```
-
 2. Запусти контейнеры:
 
 ```bash
