@@ -1,6 +1,6 @@
 # firstTask
 
-Тестовое задание для школы программирования это — простое REST API на FastAPI с архитектурой Clean Architecture для управления задачами (Tasks).
+Тестовое задание — простое REST API на FastAPI с архитектурой Clean Architecture для работы с героями (Heroes), интегрированное с внешним Superhero API.
 
 ---
 
@@ -11,23 +11,27 @@ firstTask/
 ├── src/
 │   ├── api/
 │   │   ├── __init__.py
-│   │   └── task_api.py            # Роуты FastAPI (эндпоинты)
+│   │   └── hero_api.py            # Роуты FastAPI (эндпоинты)
 │   ├── controller/
 │   │   ├── __init__.py
-│   │   └── task_controller.py     # Логика контроллера, обработка запросов
+│   │   └── hero_controller.py     # Логика контроллера, обработка запросов
 │   ├── usecase/
 │   │   ├── __init__.py
-│   │   └── task_usecase.py        # Бизнес-логика (use cases)
+│   │   └── hero_usecase.py        # Бизнес-логика (use cases), интеграция с superheroapi.com
 │   ├── models/
 │   │   ├── __init__.py
-│   │   ├── task.py                # Модель Task (SQLAlchemy)
+│   │   ├── hero.py                # Модель Hero (SQLAlchemy)
 │   │   └── db.py                  # Конфигурация базы, сессия, подключения
-│   └── main.py                   # Точка входа, запуск FastAPI приложения
-├── .env                          # Конфигурация окружения (пароли, база)
+│   └── main.py                    # Точка входа, запуск FastAPI приложения
+├── tests/
+│   ├── __init__.py
+│   └── test_routes.py
+├── .env                          # Конфигурация окружения (ключи, база)
 ├── .env.example                  # Пример файла окружения
 ├── docker-compose.yml            # Сервис с БД Postgres и приложением
 ├── Dockerfile                    # Докер образ приложения
 └── requirements.txt              # Зависимости Python
+
 ```
 
 ---
@@ -35,7 +39,7 @@ firstTask/
 ## Требования
 
 - Docker и Docker Compose  
-- Python 3.12+ (если запускать локально без докера)
+- Python 3.9 (если запускать локально без докера)
 
 ---
 
@@ -43,14 +47,6 @@ firstTask/
 
 1. Создай файл `.env` на основе `.env.example` и пропиши настройки подключения к БД:
 
-```env
-POSTGRES_USER=my_user
-POSTGRES_PASSWORD=test
-POSTGRES_DB=test
-POSTGRES_PORT=5432
-POSTGRES_HOST=db
-POSTGRES_EXTERNAL_PORT=5438
-```
 2. Запусти контейнеры:
 
 ```bash
@@ -67,17 +63,18 @@ http://localhost:8000
 
 ## API и документация
 
-В проекте реализованы следующие основные эндпоинты:
+Добавление героя в базу (через внешний API):
 
-- **GET** `/task/{task_id}` — получить задачу по ID  
-- **POST** `/task` — создать новую задачу с полями:
-  - `title` (строка) — название задачи  
-  - `description` (строка) — описание задачи  
-  - `status` (выбор из enum на русском):
-    - `новый`
-    - `в работе`
-    - `ожидание`
-
+- **GET** `/hero/` — получить список героев с возможностью фильтрации по параметрам:
+  - `name ` (опционально) — имя героя
+  - `intelligence ` (опционально) — уровень интеллекта
+  - `strength` (опционально) — сила
+  - `speed ` (опционально) — скорость
+  - `power` (опционально) — мощь
+---
+- **POST** `/task` — добавить героя по имени из внешнего Superhero API и сохранить в базу
+В теле запроса передаётся JSON с полем:
+  - `name` (строка) — имя героя, например "Batman"
 ---
 
 ## Документация Swagger UI
@@ -95,16 +92,18 @@ http://localhost:8000/docs
 
 ---
 
-## Пример JSON для создания задачи
+## Тело запроса JSON с именем героя:
 
 ```json
 {
-  "title": "Первая задача",
-  "description": "Сделать что-то важное",
-  "status": "новый"
+  "name": "Batman"
 }
 ```
-
+## Запуск тестов
+```
+pytest tests
+```
+---
 
 ## Контакты и поддержка
 
