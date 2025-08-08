@@ -1,20 +1,15 @@
 from pydantic import BaseModel
-from enum import Enum
 
-#enum схема для выбора статуса (можно увидеть в /docs)
-class TaskStatus(str, Enum):
-    new = "новый"
-    in_progress = "в процессе выполнения"
-    pending = "в ожидании"
-    done = "готово"
+class HeroCreate(BaseModel):
+    name: str
 
-class TaskCreate(BaseModel):
-    title: str
-    description: str
-    status: str
-
-class TaskRead(TaskCreate):
+class HeroRead(BaseModel):
     id: int
+    name: str
+    intelligence: int
+    strength: int
+    speed: int
+    power: int
 
     class Config:
         orm_mode = True
