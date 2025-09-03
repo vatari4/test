@@ -79,7 +79,7 @@ GROUP BY c.name;
 ```
 ---
 
-## Количество дочерних категорий 1-го уровня
+#### Количество дочерних категорий 1-го уровня
 ```sql
 SELECT parent.id AS category_id,
        parent.name AS category_name,
@@ -90,7 +90,7 @@ GROUP BY parent.id, parent.name;
 ```
 ---
 
-## Топ-5 самых продаваемых товаров за последний месяц
+#### Топ-5 самых продаваемых товаров за последний месяц
 ```sql
 SELECT p.name AS product_name,
        c.name AS category_name,
@@ -107,7 +107,7 @@ LIMIT 5;
 
 ---
 
-##  Запуск с Docker Compose
+#  Запуск с Docker Compose
 
 Проект включает конфигурацию Docker Compose для быстрого развертывания:
 Требования
@@ -142,9 +142,9 @@ docker-compose up --build
 
 ---
 
-## API Документация
+# API Документация
 
-# Документация API доступна по адресу: http://localhost:8000/docs
+## Документация API доступна по адресу: http://localhost:8000/docs
 
 ---
 
