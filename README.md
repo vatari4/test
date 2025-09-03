@@ -112,9 +112,9 @@ LIMIT 5;
 Проект включает конфигурацию Docker Compose для быстрого развертывания:
 Требования
 
--Docker
+- Docker
 
--Docker Compose
+- Docker Compose
 
 Переменные окружения
 
