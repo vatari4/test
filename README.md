@@ -23,7 +23,7 @@ CREATE TABLE categories (
 ```
 ---
 
-#### 2. Номенклатура (products)
+#### 2. Номенклатура (`products`)
 ```sql
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
@@ -35,7 +35,7 @@ CREATE TABLE products (
 ```
 ---
 
-#### 3. Клиенты (clients)
+#### 3. Клиенты (`clients`)
 ```sql
 CREATE TABLE clients (
     id SERIAL PRIMARY KEY,
@@ -45,7 +45,7 @@ CREATE TABLE clients (
 ```
 ---
 
-#### 4. Клиенты (clients)
+#### 4. Клиенты (`clients`)
 ```sql
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
