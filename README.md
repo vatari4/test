@@ -55,7 +55,7 @@ CREATE TABLE orders (
 ```
 ---
 
-#### 5. Состав заказов (order_items)
+#### 5. Состав заказов (`order_items`)
 ```sql
 CREATE TABLE order_items (
     order_id INT NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
