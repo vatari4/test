@@ -120,11 +120,12 @@ LIMIT 5;
 
 Создайте файл .env в корневой директории проекта:
 
+```sql
 POSTGRES_USER=your_username
 POSTGRES_PASSWORD=your_password
 POSTGRES_DB=your_database_name
 DATABASE_URL=postgresql://your_username:your_password@db:5432/your_database_name
-
+```
 ---
 
 ## Запуск проекта
