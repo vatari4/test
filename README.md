@@ -120,7 +120,7 @@ LIMIT 5;
 
 Создайте файл .env в корневой директории проекта:
 
-```sql
+```bash
 POSTGRES_USER=your_username
 POSTGRES_PASSWORD=your_password
 POSTGRES_DB=your_database_name
