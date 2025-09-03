@@ -66,8 +66,8 @@ CREATE TABLE order_items (
 ```
 ---
 
-#### SQL-запросы
-## Сумма товаров по каждому клиенту
+# SQL-запросы
+#### Сумма товаров по каждому клиенту
 ```sql
 SELECT c.name AS client_name,
        SUM(oi.quantity * p.price) AS total_sum
