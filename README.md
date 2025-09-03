@@ -124,7 +124,7 @@ LIMIT 5;
 POSTGRES_USER=your_username
 POSTGRES_PASSWORD=your_password
 POSTGRES_DB=your_database_name
-DATABASE_URL=postgresql://your_username:your_password@db:5432/your_database_name
+DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/mydb
 ```
 ---
 
