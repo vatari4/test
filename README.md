@@ -121,12 +121,14 @@ LIMIT 5;
 Создайте файл .env в корневой директории проекта:
 
 ```bash
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=postgres
-POSTGRES_DB=mydb
 POSTGRES_HOST=db
 POSTGRES_PORT=5432
-DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/mydb
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=appdb
+POSTGRES_DB=appdb
+
+DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+
 ```
 ---
 
