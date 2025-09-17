@@ -15,11 +15,7 @@
 ## Установка
 
 ```bash
-git clone <repo>
-cd my_game_app
-python -m venv venv
-source venv/bin/activate  # Linux / Mac
-venv\Scripts\activate     # Windows
+git clone https://github.com/vatari4/test/edit/Pusto_studio
 pip install fastapi uvicorn sqlalchemy
 ```
 
